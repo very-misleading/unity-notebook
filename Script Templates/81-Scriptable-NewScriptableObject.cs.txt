@@ -1,0 +1,11 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+#ROOTNAMESPACEBEGIN#
+    [CreateAssetMenu(fileName = "#SCRIPTNAME#", menuName = "Scriptable/#SCRIPTNAME#")]
+    public class #SCRIPTNAME# : ScriptableObject
+    {
+        #NOTRIM#
+    }
+#ROOTNAMESPACEEND#
