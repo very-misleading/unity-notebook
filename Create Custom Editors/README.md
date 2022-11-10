@@ -141,8 +141,6 @@ public class FantasticCreatureEditor : Editor
 }
 ```
 
-![The result looks like this](/Create Custom Editors/Images/Slider.png)
-
 You can disable and enable editing specified values:
 
 ```
@@ -181,6 +179,8 @@ public class FantasticCreatureEditor : Editor
     }
 }
 ```
+
+Check more of these kinds of methods: [Unity Script Reference: EditorGUILayout](https://docs.unity3d.com/ScriptReference/EditorGUILayout.html)
 
 
 ## Additional Links
