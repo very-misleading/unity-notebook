@@ -141,7 +141,46 @@ public class FantasticCreatureEditor : Editor
 }
 ```
 
-![The result looks like this](/Images/Slider.png)
+![The result looks like this](/Create Custom Editors/Images/Slider.png)
+
+You can disable and enable editing specified values:
+
+```
+[CustomEditor(typeof(FantasticCreature))]
+public class FantasticCreatureEditor : Editor
+{
+    private SerializedProperty m_health;
+    private SerializedProperty m_name;
+    private SerializedProperty m_description;
+
+    // Stores whether we can edit the values between BeginToggleGroup and EndToggleGroup.
+    private bool m_editStringValues = false;
+
+    public override void OnInspectorGUI( )
+    {
+        serializedObject.Update( );
+
+        // Enable and disable the editing of the name and description
+        m_editStringValues = EditorGUILayout.BeginToggleGroup( "String values", m_editStringValues );
+        EditorGUILayout.PropertyField( m_name );
+        EditorGUILayout.PropertyField( m_description );
+        EditorGUILayout.EndToggleGroup( );
+
+        EditorGUILayout.Slider( m_health, 0f, 100f );
+
+        serializedObject.ApplyModifiedProperties( );
+    }
+
+    private void OnEnable( )
+    {
+        m_health = serializedObject.FindProperty( "m_health" );
+        m_name = serializedObject.FindProperty( "m_name" );
+
+        // A new property for describing the creature. This has been added to the FantasticCreature class, too.
+        m_description = serializedObject.FindProperty( "m_description" );
+    }
+}
+```
 
 
 ## Additional Links
