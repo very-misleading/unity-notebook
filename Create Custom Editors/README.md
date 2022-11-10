@@ -116,5 +116,33 @@ public class FantasticCreatureEditor : Editor
 }
 ```
 
+## Customized Property Fields
+The point of customized editors is to change the default appearances and/or behavior. The example below turns the health field to a slider, with a range from 0 to 100.
+
+```
+[CustomEditor(typeof(FantasticCreature))]
+public class FantasticCreatureEditor : Editor
+{
+    [...]
+
+    public override void OnInspectorGUI( )
+    {
+        serializedObject.Update( );
+
+        EditorGUILayout.PropertyField( m_name );
+
+        // Show a slider instead of the default field.
+        EditorGUILayout.Slider( m_health, 0f, 100f );
+
+        serializedObject.ApplyModifiedProperties( );
+    }
+
+    [...]
+}
+```
+
+![The result looks like this](/Images/Slider.png)
+
+
 ## Additional Links
 [Unity Answers: Why SerializedProperty.Update is called in the beginning?](https://answers.unity.com/questions/1455633/why-serializedpropertyupdate-is-called-in-the-begi.html)
